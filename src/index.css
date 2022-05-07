@@ -1,1 +1,36 @@
 
+body {
+    background-color: aliceblue;
+}
+
+.todo-app {
+    text-align: center;
+    width: 1080px;
+    margin: 0 auto;
+}
+
+.todo-title {
+    font-size: 35px;
+    margin: 35px;
+}
+
+.todo-item-input {
+    display: flex;
+    justify-content: space-between;
+}
+
+.todo-container {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.todo-container-list {
+    display: flex !important;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.todo-item-operate {
+    font-size: 15px;
+}
