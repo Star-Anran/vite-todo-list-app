@@ -19,18 +19,37 @@ body {
     justify-content: space-between;
 }
 
+.todo-filter {
+    display: flex;
+    margin: 10px 0px;
+}
+
 .todo-container {
     border: 1px solid lightgray;
     border-radius: 5px;
-    padding: 2px;
+    padding: 2px !important;
 }
 
 .todo-container-list {
     display: flex !important;
     font-size: 15px;
-    padding: 10px;
+    padding: 10px !important;
+}
+
+.todo-container-list-done {
+    display: flex !important;
+    font-size: 15px;
+    padding: 10px !important;
+    text-decoration: line-through;
+    background-color: lightgreen;
 }
 
 .todo-item-operate {
-    font-size: 15px;
+    font-size: 25px;
+    margin-left: 10px;
 }
+
+.todo-item-operate:last-of-type {
+    margin-right: 10px;
+}
+

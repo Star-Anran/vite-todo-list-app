@@ -4,7 +4,7 @@ import { CheckCircleTwoTone,CloseCircleTwoTone } from '@ant-design/icons';
 import { STATUS } from '../../config/state';
 
 const ToDoContainer = (props) => {
-  const { todos = [],onOperate } = props;
+  const { todos = [],onOperate,filterStatus } = props;
 
   const handleOperate=(operate,item)=>{
     console.log('Operate:',operate,item);
@@ -18,7 +18,7 @@ const ToDoContainer = (props) => {
         case 'is-done':
             onOperate&&onOperate({
                 ...item,
-                state:STATUS.IS_DONE
+                state:item.state===STATUS.IS_DONE?STATUS.IS_CREATE:STATUS.IS_DONE
             })
         break;
         default:
@@ -26,15 +26,20 @@ const ToDoContainer = (props) => {
     }
   }
 
+  const showTodos=todos.filter(todo=>{
+    return todo.state!=STATUS.IS_DELETE&&
+    filterStatus.indexOf(todo.state.toString())>-1;
+  })
+
   return (
     <div className="todo-container">
-      <List dataSource={todos} 
+      <List dataSource={showTodos} 
       renderItem={(todo) => 
-        <List.Item className='todo-container-list'>
+        <List.Item className={todo.state===STATUS.IS_DONE?'todo-container-list-done':'todo-container-list'}>
             {todo.content}
-            <div className='todo-item-operate'>
-                <CloseCircleTwoTone onClick={()=>handleOperate("is-delete",todo)}/>
-                <CheckCircleTwoTone onClick={()=>handleOperate("is-done",todo)}/>
+            <div>
+                <CloseCircleTwoTone onClick={()=>handleOperate("is-delete",todo)} className='todo-item-operate'/>
+                <CheckCircleTwoTone onClick={()=>handleOperate("is-done",todo)} className='todo-item-operate'/>
             </div>
         </List.Item>} 
       />
